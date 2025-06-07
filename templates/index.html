@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CP Learning App</title>
+</head>
+<body>
+    <h1>Enter Text to Simplify and Hear</h1>
+    <form method="post">
+        <textarea name="text" rows="6" cols="60" placeholder="Enter a sentence..."></textarea><br><br>
+        <input type="submit" value="Simplify & Speak">
+    </form>
+
+    {% if output %}
+        <h2>Simplified Text:</h2>
+        <p>{{ output }}</p>
+        <h2>Audio:</h2>
+        <audio controls>
+            <source src="{{ audio }}" type="audio/mpeg">
+        </audio>
+    {% endif %}
+</body>
+</html>
