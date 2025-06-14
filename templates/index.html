@@ -1,27 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CP Learning Assistant</title>
     <style>
         :root {
             --primary: #6a5acd;
             --secondary: #ff7eb9;
-            --tertiary: #7afcff;
             --light: #f8f9fa;
             --dark: #343a40;
-            --success: #4CAF50;
-        }
-        
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
         }
         
         body {
-            font-family: 'Comfortaa', 'Comic Sans MS', cursive, sans-serif;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
             background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             margin: 0;
             padding: 20px;
@@ -32,34 +22,27 @@
             justify-content: center;
             color: var(--dark);
             transition: background 0.5s ease;
-            overflow-x: hidden;
         }
         
-        @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap');
-        
         .container {
-            background-color: rgba(255, 255, 255, 0.95);
-            border-radius: 25px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-            padding: 40px;
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 30px;
             width: 90%;
-            max-width: 650px;
+            max-width: 600px;
             text-align: center;
             position: relative;
             overflow: hidden;
-            animation: fadeIn 0.8s ease-out, gentlePulse 8s infinite alternate;
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            z-index: 10;
+            animation: fadeIn 0.8s ease-out;
         }
         
         h2 {
             color: var(--primary);
             margin-bottom: 25px;
-            font-size: 32px;
+            font-size: 28px;
             position: relative;
             display: inline-block;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
         }
         
         h2:after {
@@ -80,76 +63,52 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 25px;
-            width: 100%;
-        }
-        
-        .input-container {
-            width: 100%;
-            position: relative;
+            gap: 20px;
         }
         
         textarea {
             width: 100%;
-            padding: 20px;
-            border-radius: 20px;
+            padding: 15px;
+            border-radius: 15px;
             border: 2px solid #ddd;
-            font-size: 18px;
+            font-size: 16px;
             resize: none;
             transition: all 0.3s ease;
-            box-shadow: inset 0 3px 8px rgba(0,0,0,0.05);
-            background-color: rgba(255,255,255,0.8);
-            font-family: 'Comfortaa', sans-serif;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
         }
         
         textarea:focus {
             border-color: var(--primary);
             outline: none;
-            box-shadow: 0 0 0 4px rgba(106, 90, 205, 0.2);
-            background-color: white;
+            box-shadow: 0 0 0 3px rgba(106, 90, 205, 0.2);
         }
         
         textarea:hover {
-            transform: translateY(-3px);
-            box-shadow: inset 0 3px 10px rgba(0,0,0,0.1), 0 5px 15px rgba(0,0,0,0.05);
-        }
-        
-        .char-counter {
-            position: absolute;
-            right: 15px;
-            bottom: 15px;
-            font-size: 12px;
-            color: #999;
-            background: rgba(255,255,255,0.7);
-            padding: 2px 8px;
-            border-radius: 10px;
+            transform: translateY(-2px);
+            box-shadow: inset 0 2px 8px rgba(0,0,0,0.1);
         }
         
         button {
             background: linear-gradient(45deg, var(--primary), var(--secondary));
             color: white;
             border: none;
-            padding: 15px 40px;
-            font-size: 20px;
+            padding: 12px 30px;
+            font-size: 18px;
             border-radius: 50px;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 6px 20px rgba(106, 90, 205, 0.3);
+            box-shadow: 0 4px 15px rgba(106, 90, 205, 0.3);
             position: relative;
             overflow: hidden;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-family: 'Comfortaa', sans-serif;
         }
         
         button:hover {
-            transform: translateY(-5px) scale(1.03);
-            box-shadow: 0 10px 25px rgba(106, 90, 205, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(106, 90, 205, 0.4);
         }
         
         button:active {
-            transform: translateY(2px);
+            transform: translateY(1px);
         }
         
         button:before {
@@ -159,8 +118,8 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-            transition: 0.7s;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
         }
         
         button:hover:before {
@@ -169,87 +128,66 @@
         
         .audio-container {
             margin-top: 30px;
-            animation: slideUp 0.7s ease-out;
+            animation: slideUp 0.5s ease-out;
             width: 100%;
-            background: rgba(255,255,255,0.8);
-            padding: 20px;
-            border-radius: 20px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
         
         audio {
             width: 100%;
             border-radius: 15px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            margin-top: 10px;
-            transition: all 0.3s ease;
-        }
-        
-        audio:hover {
-            transform: scale(1.02);
         }
         
         .floating {
             position: absolute;
             animation: float 6s ease-in-out infinite;
-            opacity: 0.7;
-            z-index: 1;
-            filter: drop-shadow(0 5px 5px rgba(0,0,0,0.1));
+            opacity: 0.6;
+            z-index: -1;
         }
         
         .floating:nth-child(1) {
             top: 10%;
-            left: 5%;
-            width: 50px;
-            height: 50px;
-            background: radial-gradient(circle, var(--primary), transparent 70%);
+            left: 10%;
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary);
             border-radius: 50%;
             animation-delay: 0s;
         }
         
         .floating:nth-child(2) {
-            top: 70%;
-            right: 10%;
-            width: 70px;
-            height: 70px;
-            background: radial-gradient(circle, var(--secondary), transparent 70%);
+            top: 60%;
+            right: 15%;
+            width: 60px;
+            height: 60px;
+            background-color: var(--secondary);
             border-radius: 50%;
             animation-delay: 1s;
         }
         
         .floating:nth-child(3) {
-            bottom: 15%;
-            left: 15%;
-            width: 40px;
-            height: 40px;
-            background: radial-gradient(circle, var(--tertiary), transparent 70%);
+            bottom: 10%;
+            left: 20%;
+            width: 30px;
+            height: 30px;
+            background-color: #6a5acd;
             border-radius: 50%;
             animation-delay: 2s;
         }
         
-        .floating:nth-child(4) {
-            top: 20%;
-            right: 20%;
-            width: 30px;
-            height: 30px;
-            background: radial-gradient(circle, #ffd166, transparent 70%);
-            border-radius: 50%;
-            animation-delay: 1.5s;
-        }
-        
         @keyframes float {
-            0% { transform: translateY(0) rotate(0deg) scale(1); }
-            50% { transform: translateY(-30px) rotate(5deg) scale(1.05); }
-            100% { transform: translateY(0) rotate(0deg) scale(1); }
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+            100% { transform: translateY(0) rotate(0deg); }
         }
         
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(30px); }
+            from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
         
         @keyframes slideUp {
-            from { opacity: 0; transform: translateY(30px); }
+            from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
         
@@ -259,287 +197,30 @@
             100% { transform: scaleX(0); }
         }
         
-        @keyframes gentlePulse {
-            0% { transform: scale(1); box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1); }
-            50% { transform: scale(1.005); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15); }
-            100% { transform: scale(1); box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1); }
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #f00;
+            opacity: 0;
         }
         
         .heart {
             position: absolute;
-            font-size: 24px;
+            font-size: 20px;
             color: #ff7eb9;
             opacity: 0;
             animation: heartFloat 4s linear forwards;
-            pointer-events: none;
-            z-index: 100;
         }
         
         @keyframes heartFloat {
             0% {
-                transform: translateY(0) rotate(0deg) scale(0.5);
+                transform: translateY(0) rotate(0deg);
                 opacity: 1;
             }
-            50% {
-                opacity: 0.8;
-            }
             100% {
-                transform: translateY(-150px) rotate(30deg) scale(1.2);
+                transform: translateY(-100px) rotate(20deg);
                 opacity: 0;
-            }
-        }
-        
-        .success-message {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: linear-gradient(135deg, var(--success), #66BB6A);
-            color: white;
-            padding: 15px 25px;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            animation: slideInRight 0.5s ease-out, fadeOut 0.5s ease-out 2.5s forwards;
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: bold;
-        }
-        
-        .success-message:before {
-            content: '✓';
-            font-size: 24px;
-        }
-        
-        @keyframes slideInRight {
-            from { transform: translateX(100%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-        
-        @keyframes fadeOut {
-            from { opacity: 1; transform: translateX(0); }
-            to { opacity: 0; transform: translateX(20px); }
-        }
-        
-        .tooltip {
-            position: absolute;
-            background-color: var(--dark);
-            color: white;
-            padding: 8px 15px;
-            border-radius: 10px;
-            font-size: 14px;
-            pointer-events: none;
-            opacity: 0;
-            transition: opacity 0.3s;
-            z-index: 100;
-            white-space: nowrap;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-        
-        .tooltip:after {
-            content: '';
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            margin-left: -5px;
-            border-width: 5px;
-            border-style: solid;
-            border-color: var(--dark) transparent transparent transparent;
-        }
-        
-        .progress-bar {
-            width: 100%;
-            height: 6px;
-            background-color: #f0f0f0;
-            border-radius: 3px;
-            margin-top: 10px;
-            overflow: hidden;
-            display: none;
-        }
-        
-        .progress {
-            height: 100%;
-            width: 0%;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            border-radius: 3px;
-            transition: width 0.3s ease;
-        }
-        
-        .keyboard-button {
-            display: inline-block;
-            background: white;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            padding: 3px 8px;
-            margin: 2px;
-            box-shadow: 0 2px 3px rgba(0,0,0,0.1);
-            font-family: monospace;
-        }
-        
-        .keyboard-shortcut-hint {
-            font-size: 14px;
-            color: #666;
-            margin-top: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 5px;
-        }
-        
-        .theme-toggle {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: rgba(255,255,255,0.8);
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            z-index: 100;
-        }
-        
-        .theme-toggle:hover {
-            transform: rotate(30deg) scale(1.1);
-        }
-        
-        .dark-mode {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            color: #f0f0f0;
-        }
-        
-        .dark-mode .container {
-            background-color: rgba(30, 30, 50, 0.95);
-            color: #f0f0f0;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .dark-mode textarea {
-            background-color: rgba(40, 40, 60, 0.8);
-            color: #f0f0f0;
-            border-color: #444;
-        }
-        
-        .dark-mode textarea:focus {
-            background-color: rgba(50, 50, 70, 0.9);
-        }
-        
-        .dark-mode .audio-container {
-            background: rgba(40, 40, 60, 0.8);
-        }
-        
-        .particle {
-            position: absolute;
-            pointer-events: none;
-            z-index: 2;
-        }
-        
-        .voice-selector {
-            display: flex;
-            gap: 10px;
-            margin-top: 10px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        
-        .voice-option {
-            padding: 8px 15px;
-            border-radius: 20px;
-            background: rgba(106, 90, 205, 0.1);
-            border: 1px solid rgba(106, 90, 205, 0.3);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .voice-option:hover {
-            background: rgba(106, 90, 205, 0.2);
-        }
-        
-        .voice-option.active {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
-        }
-        
-        .settings-toggle {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            background: rgba(255,255,255,0.8);
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            z-index: 100;
-        }
-        
-        .settings-panel {
-            position: absolute;
-            top: 70px;
-            left: 20px;
-            background: white;
-            border-radius: 15px;
-            padding: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transform: translateX(-150%);
-            transition: transform 0.3s ease;
-            width: 250px;
-            z-index: 100;
-        }
-        
-        .settings-panel.open {
-            transform: translateX(0);
-        }
-        
-        .settings-option {
-            margin-bottom: 15px;
-        }
-        
-        .settings-option label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-        
-        .settings-option select, .settings-option input {
-            width: 100%;
-            padding: 8px;
-            border-radius: 8px;
-            border: 1px solid #ddd;
-        }
-        
-        @media (max-width: 600px) {
-            .container {
-                padding: 30px 20px;
-            }
-            
-            h2 {
-                font-size: 24px;
-            }
-            
-            textarea {
-                font-size: 16px;
-                padding: 15px;
-            }
-            
-            button {
-                padding: 12px 30px;
-                font-size: 18px;
-            }
-            
-            .floating {
-                display: none;
             }
         }
     </style>
@@ -548,65 +229,21 @@
     <div class="floating"></div>
     <div class="floating"></div>
     <div class="floating"></div>
-    <div class="floating"></div>
-    
-    <button class="theme-toggle" id="themeToggle">🌓</button>
-    
-    <button class="settings-toggle" id="settingsToggle">⚙️</button>
-    <div class="settings-panel" id="settingsPanel">
-        <h3>Settings</h3>
-        <div class="settings-option">
-            <label for="fontSize">Font Size</label>
-            <select id="fontSize">
-                <option value="16px">Small</option>
-                <option value="18px" selected>Medium</option>
-                <option value="20px">Large</option>
-                <option value="22px">Extra Large</option>
-            </select>
-        </div>
-        <div class="settings-option">
-            <label for="animationLevel">Animation Level</label>
-            <select id="animationLevel">
-                <option value="full">Full</option>
-                <option value="reduced">Reduced</option>
-                <option value="none">None</option>
-            </select>
-        </div>
-        <div class="settings-option">
-            <label for="voiceSpeed">Voice Speed</label>
-            <input type="range" id="voiceSpeed" min="0.5" max="2" step="0.1" value="1">
-        </div>
-    </div>
     
     <div class="container">
         <h2>Text-to-Speech for Cerebral Palsy Learners</h2>
         <form method="POST" id="speechForm">
-            <div class="input-container">
-                <textarea name="text" id="speechText" rows="5" cols="50" placeholder="Enter text to read aloud (or paste from clipboard)" required></textarea>
-                <div class="char-counter"><span id="charCount">0</span>/1000</div>
-            </div>
-            <div class="progress-bar" id="progressBar">
-                <div class="progress" id="progress"></div>
-            </div>
+            <textarea name="text" rows="5" cols="50" placeholder="Enter text to read aloud" required></textarea><br>
             <button type="submit" id="submitBtn">Convert to Speech</button>
-            <div class="keyboard-shortcut-hint">
-                <span>Quick access:</span>
-                <span class="keyboard-button">Ctrl</span> + <span class="keyboard-button">Enter</span>
-            </div>
         </form>
 
         {% if audio_url %}
             <div class="audio-container">
                 <h3>Generated Audio:</h3>
-                <audio controls id="generatedAudio">
+                <audio controls>
                     <source src="{{ audio_url }}" type="audio/mpeg">
                     Your browser does not support the audio element.
                 </audio>
-                <div class="voice-selector" id="voiceSelector">
-                    <div class="voice-option" data-speed="0.8">Slow</div>
-                    <div class="voice-option active" data-speed="1.0">Normal</div>
-                    <div class="voice-option" data-speed="1.2">Fast</div>
-                </div>
             </div>
         {% endif %}
     </div>
@@ -615,58 +252,16 @@
         document.addEventListener('DOMContentLoaded', function() {
             const submitBtn = document.getElementById('submitBtn');
             const form = document.getElementById('speechForm');
-            const textarea = document.getElementById('speechText');
-            const charCount = document.getElementById('charCount');
-            const progressBar = document.getElementById('progressBar');
-            const progress = document.getElementById('progress');
-            const themeToggle = document.getElementById('themeToggle');
-            const settingsToggle = document.getElementById('settingsToggle');
-            const settingsPanel = document.getElementById('settingsPanel');
-            const fontSizeSelect = document.getElementById('fontSize');
-            const animationLevelSelect = document.getElementById('animationLevel');
-            const voiceSpeedInput = document.getElementById('voiceSpeed');
-            const voiceOptions = document.querySelectorAll('.voice-option');
-            const audioElement = document.getElementById('generatedAudio');
+            const textarea = document.querySelector('textarea');
             
-            // Character counter
-            textarea.addEventListener('input', function() {
-                const count = this.value.length;
-                charCount.textContent = count;
-                
-                // Update progress bar
-                const progressPercent = Math.min(100, (count / 1000) * 100);
-                progress.style.width = `${progressPercent}%`;
-                
-                // Change color based on length
-                if (count > 800) {
-                    progress.style.background = 'linear-gradient(90deg, #ff7eb9, #ff416c)';
-                    charCount.style.color = '#ff416c';
-                } else if (count > 500) {
-                    progress.style.background = 'linear-gradient(90deg, #ffb347, #ff7eb9)';
-                    charCount.style.color = '#ff7eb9';
-                } else {
-                    progress.style.background = 'linear-gradient(90deg, var(--primary), var(--secondary))';
-                    charCount.style.color = '#666';
-                }
-                
-                // Show progress bar when typing starts
-                if (count > 0 && progressBar.style.display !== 'block') {
-                    progressBar.style.display = 'block';
-                } else if (count === 0) {
-                    progressBar.style.display = 'none';
-                }
-                
-                // Show encouraging messages at random intervals
-                if (count > 0 && Math.random() > 0.98) {
-                    showEncouragingMessage();
-                }
+            // Add floating label effect to textarea
+            textarea.addEventListener('focus', function() {
+                this.parentElement.querySelector('label')?.classList.add('active');
             });
             
-            // Keyboard shortcut (Ctrl+Enter to submit)
-            textarea.addEventListener('keydown', function(e) {
-                if (e.ctrlKey && e.key === 'Enter') {
-                    e.preventDefault();
-                    form.requestSubmit();
+            textarea.addEventListener('blur', function() {
+                if (!this.value) {
+                    this.parentElement.querySelector('label')?.classList.remove('active');
                 }
             });
             
@@ -675,135 +270,63 @@
                 submitBtn.addEventListener('click', function(e) {
                     if (form.checkValidity()) {
                         createHearts();
-                        simulateProcessing();
+                        this.innerHTML = 'Processing...';
+                        setTimeout(() => {
+                            this.innerHTML = 'Convert to Speech';
+                        }, 2000);
                     }
                 });
-            }
-            
-            // Simulate processing with progress animation
-            function simulateProcessing() {
-                submitBtn.disabled = true;
-                submitBtn.innerHTML = 'Processing...';
-                
-                let progress = 0;
-                const interval = setInterval(() => {
-                    progress += Math.random() * 10;
-                    if (progress >= 100) {
-                        clearInterval(interval);
-                        submitBtn.innerHTML = 'Convert to Speech';
-                        submitBtn.disabled = false;
-                        showSuccessMessage();
-                    }
-                }, 200);
             }
             
             // Create floating hearts animation
             function createHearts() {
                 const buttonRect = submitBtn.getBoundingClientRect();
-                const colors = ['#ff7eb9', '#6a5acd', '#ff65a3', '#7e8dff', '#7afcff'];
+                const colors = ['#ff7eb9', '#6a5acd', '#ff65a3', '#7e8dff'];
                 
-                for (let i = 0; i < 12; i++) {
+                for (let i = 0; i < 8; i++) {
                     const heart = document.createElement('div');
                     heart.classList.add('heart');
-                    heart.innerHTML = ['❤', '🧡', '💛', '💚', '💙', '💜', '🤍', '💖'][Math.floor(Math.random() * 8)];
-                    heart.style.left = (buttonRect.left + buttonRect.width/2 - 10 + Math.random() * 40 - 20) + 'px';
+                    heart.innerHTML = '❤';
+                    heart.style.left = (buttonRect.left + buttonRect.width/2 - 10) + 'px';
                     heart.style.top = (buttonRect.top + buttonRect.height/2 - 10) + 'px';
                     heart.style.color = colors[Math.floor(Math.random() * colors.length)];
                     heart.style.animationDuration = (2 + Math.random() * 3) + 's';
-                    heart.style.fontSize = (20 + Math.random() * 20) + 'px';
                     document.body.appendChild(heart);
                     
                     setTimeout(() => {
                         heart.remove();
                     }, 4000);
                 }
-                
-                // Add some particles
-                createParticles(buttonRect.left + buttonRect.width/2, buttonRect.top + buttonRect.height/2);
             }
             
-            // Create particle explosion
-            function createParticles(x, y) {
-                const colors = ['#ff7eb9', '#6a5acd', '#7afcff', '#ffd166', '#06d6a0'];
-                
-                for (let i = 0; i < 30; i++) {
-                    const particle = document.createElement('div');
-                    particle.classList.add('particle');
-                    particle.style.left = x + 'px';
-                    particle.style.top = y + 'px';
-                    particle.style.width = (5 + Math.random() * 10) + 'px';
-                    particle.style.height = particle.style.width;
-                    particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                    particle.style.borderRadius = '50%';
-                    particle.style.opacity = '0.8';
-                    
-                    const angle = Math.random() * Math.PI * 2;
-                    const velocity = 2 + Math.random() * 3;
-                    const lifetime = 1000 + Math.random() * 1000;
-                    
-                    document.body.appendChild(particle);
-                    
-                    let startTime = Date.now();
-                    
-                    function updateParticle() {
-                        const elapsed = Date.now() - startTime;
-                        const progress = elapsed / lifetime;
-                        
-                        if (progress >= 1) {
-                            particle.remove();
-                            return;
-                        }
-                        
-                        const currentX = x + Math.cos(angle) * velocity * elapsed * 0.1;
-                        const currentY = y + Math.sin(angle) * velocity * elapsed * 0.1;
-                        
-                        particle.style.left = currentX + 'px';
-                        particle.style.top = currentY + 'px';
-                        particle.style.opacity = 0.8 * (1 - progress);
-                        particle.style.transform = `scale(${1 - progress * 0.5})`;
-                        
-                        requestAnimationFrame(updateParticle);
-                    }
-                    
-                    requestAnimationFrame(updateParticle);
+            // Background color animation
+            let hue = 0;
+            function animateBackground() {
+                hue = (hue + 0.5) % 360;
+                document.body.style.background = `linear-gradient(135deg, hsl(${hue}, 80%, 95%) 0%, hsl(${(hue + 60) % 360}, 60%, 85%) 100%)`;
+                requestAnimationFrame(animateBackground);
+            }
+            
+            // Start subtle background animation
+            animateBackground();
+            
+            // Add some encouraging messages when text is entered
+            const encouragingMessages = [
+                "You're doing great!",
+                "Keep up the good work!",
+                "Learning is fun with you!",
+                "Your words matter!",
+                "You're a star learner!",
+                "I bet you're a genius!"
+            ];
+            
+            textarea.addEventListener('input', function() {
+                if (this.value.length > 30 && Math.random() > 0.7) {
+                    showFloatingMessage();
                 }
-            }
+            });
             
-            // Show success message
-            function showSuccessMessage() {
-                const messages = [
-                    "Success! Audio generated!",
-                    "Great job! Your audio is ready!",
-                    "Amazing! Listen to your creation!",
-                    "Perfect! Your text is now speech!",
-                    "Well done! Audio conversion complete!"
-                ];
-                
-                const message = document.createElement('div');
-                message.className = 'success-message';
-                message.textContent = messages[Math.floor(Math.random() * messages.length)];
-                document.body.appendChild(message);
-                
-                setTimeout(() => {
-                    message.remove();
-                }, 3000);
-            }
-            
-            // Show encouraging message
-            function showEncouragingMessage() {
-                const encouragingMessages = [
-                    "You're doing great!",
-                    "Keep up the good work!",
-                    "Learning is fun with you!",
-                    "Your words matter!",
-                    "You're a star learner!",
-                    "I bet you're a genius!",
-                    "Brilliant typing!",
-                    "You're amazing!",
-                    "Keep going!",
-                    "Fantastic progress!"
-                ];
-                
+            function showFloatingMessage() {
                 const message = encouragingMessages[Math.floor(Math.random() * encouragingMessages.length)];
                 const messageEl = document.createElement('div');
                 messageEl.textContent = message;
@@ -812,12 +335,10 @@
                 messageEl.style.right = '20px';
                 messageEl.style.backgroundColor = 'rgba(106, 90, 205, 0.9)';
                 messageEl.style.color = 'white';
-                messageEl.style.padding = '12px 24px';
-                messageEl.style.borderRadius = '25px';
-                messageEl.style.boxShadow = '0 6px 20px rgba(0,0,0,0.2)';
+                messageEl.style.padding = '10px 20px';
+                messageEl.style.borderRadius = '20px';
+                messageEl.style.boxShadow = '0 4px 15px rgba(0,0,0,0.2)';
                 messageEl.style.animation = 'fadeInOut 3s ease-out forwards';
-                messageEl.style.fontWeight = 'bold';
-                messageEl.style.zIndex = '1000';
                 document.body.appendChild(messageEl);
                 
                 setTimeout(() => {
@@ -825,118 +346,17 @@
                 }, 3000);
             }
             
-            // Theme toggle
-            themeToggle.addEventListener('click', function() {
-                document.body.classList.toggle('dark-mode');
-                this.textContent = document.body.classList.contains('dark-mode') ? '🌞' : '🌓';
-                
-                // Save preference to localStorage
-                localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
-            });
-            
-            // Check for saved theme preference
-            if (localStorage.getItem('darkMode') === 'true') {
-                document.body.classList.add('dark-mode');
-                themeToggle.textContent = '🌞';
-            }
-            
-            // Settings toggle
-            settingsToggle.addEventListener('click', function() {
-                settingsPanel.classList.toggle('open');
-            });
-            
-            // Font size adjustment
-            fontSizeSelect.addEventListener('change', function() {
-                textarea.style.fontSize = this.value;
-                localStorage.setItem('fontSize', this.value);
-            });
-            
-            // Check for saved font size
-            if (localStorage.getItem('fontSize')) {
-                textarea.style.fontSize = localStorage.getItem('fontSize');
-                fontSizeSelect.value = localStorage.getItem('fontSize');
-            }
-            
-            // Animation level adjustment
-            animationLevelSelect.addEventListener('change', function() {
-                // This would need more comprehensive implementation
-                localStorage.setItem('animationLevel', this.value);
-            });
-            
-            // Check for saved animation level
-            if (localStorage.getItem('animationLevel')) {
-                animationLevelSelect.value = localStorage.getItem('animationLevel');
-            }
-            
-            // Voice speed adjustment
-            voiceSpeedInput.addEventListener('input', function() {
-                if (audioElement) {
-                    audioElement.playbackRate = this.value;
+            // Add style for the floating message animation
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes fadeInOut {
+                    0% { opacity: 0; transform: translateY(20px); }
+                    20% { opacity: 1; transform: translateY(0); }
+                    80% { opacity: 1; transform: translateY(0); }
+                    100% { opacity: 0; transform: translateY(-20px); }
                 }
-                localStorage.setItem('voiceSpeed', this.value);
-            });
-            
-            // Check for saved voice speed
-            if (localStorage.getItem('voiceSpeed') && audioElement) {
-                voiceSpeedInput.value = localStorage.getItem('voiceSpeed');
-                audioElement.playbackRate = localStorage.getItem('voiceSpeed');
-            }
-            
-            // Voice option selection
-            voiceOptions.forEach(option => {
-                option.addEventListener('click', function() {
-                    voiceOptions.forEach(opt => opt.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    if (audioElement) {
-                        audioElement.playbackRate = parseFloat(this.dataset.speed);
-                        voiceSpeedInput.value = this.dataset.speed;
-                        localStorage.setItem('voiceSpeed', this.dataset.speed);
-                    }
-                });
-            });
-            
-            // Add tooltip to theme toggle
-            addTooltip(themeToggle, 'Toggle dark mode');
-            
-            // Add tooltip to settings toggle
-            addTooltip(settingsToggle, 'Settings');
-            
-            // Function to add tooltip
-            function addTooltip(element, text) {
-                const tooltip = document.createElement('div');
-                tooltip.className = 'tooltip';
-                tooltip.textContent = text;
-                document.body.appendChild(tooltip);
-                
-                element.addEventListener('mouseenter', function(e) {
-                    const rect = this.getBoundingClientRect();
-                    tooltip.style.left = (rect.left + rect.width / 2 - tooltip.offsetWidth / 2) + 'px';
-                    tooltip.style.top = (rect.top - tooltip.offsetHeight - 10) + 'px';
-                    tooltip.style.opacity = '1';
-                });
-                
-                element.addEventListener('mouseleave', function() {
-                    tooltip.style.opacity = '0';
-                });
-            }
-            
-            // Add some initial encouragement
-            setTimeout(() => {
-                if (textarea.value.length === 0) {
-                    showEncouragingMessage();
-                }
-            }, 3000);
-            
-            // Add animation for audio element when it appears
-            if (audioElement) {
-                audioElement.addEventListener('play', function() {
-                    createParticles(
-                        audioElement.getBoundingClientRect().left + audioElement.offsetWidth / 2,
-                        audioElement.getBoundingClientRect().top + audioElement.offsetHeight / 2
-                    );
-                });
-            }
+            `;
+            document.head.appendChild(style);
         });
     </script>
 </body>
